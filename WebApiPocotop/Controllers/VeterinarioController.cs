@@ -48,8 +48,8 @@ namespace WebApiPocotop.Controllers
         {
             try
             {
-                //if (!ModelState.IsValid)
-                    //return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
 
                 repository.Add(veterinario);
 
