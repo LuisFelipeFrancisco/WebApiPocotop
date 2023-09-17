@@ -1,0 +1,9 @@
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Repositories.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Repositories.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Models.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Models.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\obj\Debug\Repositories.csproj.AssemblyReference.cache
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\obj\Debug\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\obj\Debug\Repositories.csproj.CopyComplete
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\obj\Debug\Repositories.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\obj\Debug\Repositories.pdb
