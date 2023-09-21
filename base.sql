@@ -13,6 +13,7 @@
 -- Data do Cadastro - Data do cadastro do proprietário
 
 -- Animal
+-- Foto do animal - Adicionar foto do animal *Adicionar
 -- Proprietário - Selecione o proprietário deste animal
 -- Nome do Animal - Nome do animal para melhor identifica-lo
 -- Sexo do animal - Sexo deste animal
@@ -26,6 +27,7 @@
 
 -- Veterinário
 -- Nome do Veterinário - Nome do veterinário
+-- Foto do Veterinário - Adicionar foto do veterinário *Adicionar
 -- Email do Veterinário - Email do veterinário
 -- Senha do Veterinário - Senha do veterinário
 -- Estado - Estado do veterinário
@@ -46,8 +48,8 @@
 -- Data do Cadastro - Data do cadastro deste serviço
 
 -- Agendamento
--- Proprietário - Selecione o proprietário deste animal
--- Animal - Selecione o animal deste agendamento
+-- - Selecione o proprietário deste animal
+-- Animal -  ProprietárioSelecione o animal deste agendamento
 -- Serviço - Selecione o serviço deste agendamento
 -- Data do Agendamento - Data do agendamento
 -- Hora do Agendamento - Hora do agendamento
@@ -64,7 +66,6 @@ CREATE TABLE Proprietario (
     idProprietario int IDENTITY(1,1) PRIMARY KEY,
     nomeProprietario varchar(100) NOT NULL,
     emailProprietario varchar(100) NOT NULL,
-    senhaProprietario varchar(100) NOT NULL,
     estadoProprietario varchar(100) NOT NULL,
     cidadeProprietario varchar(100) NOT NULL,
     bairroProprietario varchar(100) NOT NULL,
@@ -79,6 +80,7 @@ CREATE TABLE Proprietario (
 CREATE TABLE Animal (
     idAnimal int IDENTITY(1,1) PRIMARY KEY,
     idProprietario int NOT NULL,
+    fotoAnimal varchar(100) NULL,
     nomeAnimal varchar(100) NOT NULL,
     sexoAnimal varchar(100) NOT NULL,
     registroAnimal varchar(100) NOT NULL,
@@ -94,6 +96,7 @@ CREATE TABLE Animal (
 CREATE TABLE Veterinario (
     idVeterinario int IDENTITY(1,1) PRIMARY KEY,
     nomeVeterinario varchar(100) NOT NULL,
+    fotoVeterinario varchar(100) NULL,
     emailVeterinario varchar(100) NOT NULL,
     senhaVeterinario varchar(100) NOT NULL,
     estadoVeterinario varchar(100) NOT NULL,
