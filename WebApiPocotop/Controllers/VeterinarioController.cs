@@ -20,7 +20,7 @@ namespace WebApiPocotop.Controllers
             }
             catch (Exception ex)
             {
-                //Logger.Log.write(ex, WebApi.Configurations.Log.getLogPath());
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
                 return InternalServerError();
             }
         }
@@ -38,7 +38,7 @@ namespace WebApiPocotop.Controllers
             }
             catch (Exception ex)
             {
-                //Logger.Log.write(ex, WebApi.Configurations.Log.getLogPath());
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
                 return InternalServerError();
             }
         }
@@ -57,7 +57,7 @@ namespace WebApiPocotop.Controllers
             }
             catch (Exception ex)
             {
-                //Logger.Log.write(ex, WebApi.Configurations.Log.getLogPath());
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
                 return InternalServerError();
             }
         }
@@ -82,7 +82,7 @@ namespace WebApiPocotop.Controllers
             }
             catch (Exception ex)
             {
-                //Logger.Log.write(ex, WebApi.Configurations.Log.getLogPath());
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
                 return InternalServerError();
             }
         }

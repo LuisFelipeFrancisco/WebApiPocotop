@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Configurations\Log.cs" />
     <Compile Include="Configurations\SQLServer.cs" />
     <Compile Include="Controllers\VeterinarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -111,6 +112,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{6d66309f-bbab-4cd4-873b-d6610d3c9576}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4eb27f75-b68c-4a47-a1ca-f968a1267cb6}</Project>
       <Name>Models</Name>

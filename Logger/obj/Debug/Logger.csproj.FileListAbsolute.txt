@@ -1,0 +1,6 @@
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\bin\Debug\Logger.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\bin\Debug\Logger.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.csproj.AssemblyReference.cache
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.pdb
