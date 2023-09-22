@@ -1,7 +1,6 @@
 -- Proprietários
 -- Nome do Proprietário - Nome do proprietário
 -- Email do Proprietário - Email do proprietário
--- Senha do Proprietário - Senha do proprietário
 -- Estado - Estado do proprietário
 --     Cidade - Cidade do proprietário
 --     Bairro - Bairro do proprietário
