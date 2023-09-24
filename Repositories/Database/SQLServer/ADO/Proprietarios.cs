@@ -170,5 +170,46 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
+
+        public List<Models.Proprietario> GetByFilter(string filter)
+        {
+            List<Models.Proprietario> proprietarios = new List<Models.Proprietario>();
+            Models.Proprietario proprietario = null;
+
+            using(conn)
+            {
+                conn.Open();
+
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT idProprietario, nomeProprietario, emailProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario WHERE nomeProprietario LIKE @nomeProprietario";
+                    cmd.Parameters.Add(new SqlParameter("@nomeProprietario", System.Data.SqlDbType.VarChar)).Value = "%" + filter + "%";
+
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            proprietario = new Models.Proprietario();
+                            proprietario.idProprietario = (int)dataReader["idProprietario"];
+                            proprietario.nomeProprietario = (string)dataReader["nomeProprietario"];
+                            proprietario.emailProprietario = (string)dataReader["emailProprietario"];
+                            proprietario.estadoProprietario = (string)dataReader["estadoProprietario"];
+                            proprietario.cidadeProprietario = (string)dataReader["cidadeProprietario"];
+                            proprietario.bairroProprietario = (string)dataReader["bairroProprietario"];
+                            proprietario.ruaProprietario = (string)dataReader["ruaProprietario"];
+                            proprietario.numeroProprietario = (string)dataReader["numeroProprietario"];
+                            proprietario.complementoProprietario = dataReader["complementoProprietario"] == DBNull.Value ? null : (string)dataReader["complementoProprietario"];
+                            proprietario.telefoneProprietario = (string)dataReader["telefoneProprietario"];
+                            proprietario.cpfcnpjProprietario = (string)dataReader["cpfcnpjProprietario"];
+                            proprietario.dataCadastroProprietario = (DateTime)dataReader["dataCadastroProprietario"];
+
+                            proprietarios.Add(proprietario);
+                        }
+                    }
+                }
+            }
+            return proprietarios;
+        }
     }
 }

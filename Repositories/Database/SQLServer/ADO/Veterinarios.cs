@@ -182,5 +182,10 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
+
+        public List<Models.Veterinario> GetByFilter(string filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

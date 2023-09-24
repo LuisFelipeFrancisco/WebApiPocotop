@@ -104,5 +104,20 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
+
+        // GET: api/Proprietario/Filter?nome=string
+        [Route("api/Proprietario/Filter")]
+        public IHttpActionResult Get(string nome)
+        {
+            try
+            {
+                return Ok(repository.GetByFilter(nome));
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
+                return InternalServerError();
+            }
+        }
     }
 }

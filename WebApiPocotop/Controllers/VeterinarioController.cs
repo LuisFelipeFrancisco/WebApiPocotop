@@ -105,5 +105,19 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
+
+        // GET: api/Veterinario/?filter=nome
+        public IHttpActionResult GetByFilter(string filter)
+        {
+            try
+            {
+                return Ok(repository.GetByFilter(filter));
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
+                return InternalServerError();
+            }
+        }
     }
 }

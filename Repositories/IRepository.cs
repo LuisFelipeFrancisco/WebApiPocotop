@@ -9,5 +9,6 @@ namespace Repositories
         void Add(T entity);
         int Update(int id, T entity);
         int Delete(int id);
+        List<T> GetByFilter(string filter);
     }
 }
