@@ -82,7 +82,7 @@ CREATE TABLE Animal (
     fotoAnimal varchar(100) NULL,
     nomeAnimal varchar(100) NOT NULL,
     sexoAnimal varchar(100) NOT NULL,
-    registroAnimal varchar(100) NOT NULL,
+    registroAnimal varchar(100) NULL,
     dataNascimentoAnimal datetime NOT NULL,
     racaAnimal varchar(100) NOT NULL,
     pelagemAnimal varchar(100) NULL,
