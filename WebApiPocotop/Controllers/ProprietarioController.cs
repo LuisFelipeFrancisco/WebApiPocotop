@@ -3,15 +3,14 @@ using System.Web.Http;
 
 namespace WebApiPocotop.Controllers
 {
-    public class VeterinarioController : ApiController
+    public class ProprietarioController : ApiController
     {
-        private readonly Repositories.IRepository<Models.Veterinario> repository;
-        public VeterinarioController()
+        private readonly Repositories.IRepository<Models.Proprietario> repository;
+        public ProprietarioController()
         {
-            repository = new Repositories.Database.SQLServer.ADO.Veterinarios(Configurations.SQLServer.getConnectionString());
+             repository = new Repositories.Database.SQLServer.ADO.Proprietarios(Configurations.SQLServer.getConnectionString());
         }
-
-        // GET: api/Veterinario
+        // GET: api/Proprietario
         public IHttpActionResult Get()
         {
             try
@@ -25,16 +24,16 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // GET: api/Veterinario/5
+        // GET: api/Proprietario/5
         public IHttpActionResult Get(int id)
         {
             try
             {
-                Models.Veterinario veterinario = repository.GetById(id);
-                if (veterinario == null)
+                Models.Proprietario proprietario = repository.GetById(id);
+                if (proprietario == null)
                     return NotFound();
                 else
-                    return Ok(veterinario);
+                    return Ok(proprietario);
             }
             catch (Exception ex)
             {
@@ -43,17 +42,17 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // POST: api/Veterinario
-        public IHttpActionResult Post(Models.Veterinario veterinario)
+        // POST: api/Proprietario
+        public IHttpActionResult Post(Models.Proprietario proprietario)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                repository.Add(veterinario);
+                repository.Add(proprietario);
 
-                return Ok(veterinario);
+                return Ok(proprietario);
             }
             catch (Exception ex)
             {
@@ -62,23 +61,23 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // PUT: api/Veterinario/5
-        public IHttpActionResult Put(int id, Models.Veterinario veterinario)
+        // PUT: api/Proprietario/5
+        public IHttpActionResult Put(int id, Models.Proprietario proprietario)
         {
             try
             {
-                if (id != veterinario.idVeterinario)
+                if (id != proprietario.idProprietario)
                     ModelState.AddModelError("Id", "O id informado na URL é diferente do id informado no corpo da requisição");
 
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                int linhasAfetadas = repository.Update(id, veterinario);
+                int linhasAfetadas = repository.Update(id, proprietario);
 
                 if (linhasAfetadas == 0)
                     return NotFound();
 
-                return Ok(veterinario);
+                return Ok(proprietario);
             }
             catch (Exception ex)
             {
@@ -87,7 +86,7 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // DELETE: api/Veterinario/5
+        // DELETE: api/Proprietario/5
         public IHttpActionResult Delete(int id)
         {
             try

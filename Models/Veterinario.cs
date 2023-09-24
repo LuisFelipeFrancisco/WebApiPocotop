@@ -16,6 +16,7 @@ telefoneVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 15 caracteres,
 crmvVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 10 caracteres, Errormessage: "O CRMV do veterinário é obrigatório", Errormessage: "O CRMV do veterinário somente pode ter no máximo 10 caracteres"
 dataCadastroVeterinario date NOT NULL - Obrigatório, Errormessage: "A data de cadastro do veterinário é obrigatória"
 */
+
 namespace Models
 {
     public class Veterinario
