@@ -2,12 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-/* idServico int IDENTITY(1,1) PRIMARY KEY,
-nomeServico varchar(100) NOT NULL,
-valorServico decimal(18,2) NOT NULL,
-observacoesServico varchar(100) NULL,
-dataCadastroServico date NOT NULL */
-
 namespace Repositories.Database.SQLServer.ADO
 {
     public class Servicos : IRepository<Models.Servico>
