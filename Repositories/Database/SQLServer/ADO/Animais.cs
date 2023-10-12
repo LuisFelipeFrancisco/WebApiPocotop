@@ -2,19 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-/* idAnimal int IDENTITY(1,1) PRIMARY KEY,
-idProprietario int NOT NULL,
-fotoAnimal varchar(100) NULL,
-nomeAnimal varchar(100) NOT NULL,
-sexoAnimal varchar(100) NOT NULL,
-registroAnimal varchar(100) NULL,
-dataNascimentoAnimal date NOT NULL,
-racaAnimal varchar(100) NOT NULL,
-pelagemAnimal varchar(100) NULL,
-temperamentoAnimal varchar(100) NULL,
-observacoesAnimal varchar(100) NULL,
-dataCadastroAnimal date NOT NULL,
- */
 namespace Repositories.Database.SQLServer.ADO
 {
     public class Animais : IRepository<Models.Animal>
