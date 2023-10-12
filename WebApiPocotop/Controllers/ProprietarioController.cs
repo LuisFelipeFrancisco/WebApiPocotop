@@ -6,9 +6,11 @@ namespace WebApiPocotop.Controllers
     public class ProprietarioController : ApiController
     {
         private readonly Repositories.IRepository<Models.Proprietario> repository;
+        private readonly Repositories.ExtendedIRepository<Models.Proprietario> extendedrepository;
         public ProprietarioController()
         {
-             repository = new Repositories.Database.SQLServer.ADO.Proprietarios(Configurations.SQLServer.getConnectionString());
+            repository = new Repositories.Database.SQLServer.ADO.Proprietarios(Configurations.SQLServer.getConnectionString());
+            extendedrepository = new Repositories.Database.SQLServer.ADO.Proprietarios(Configurations.SQLServer.getConnectionString());
         }
         // GET: api/Proprietario
         public IHttpActionResult Get()
@@ -111,7 +113,7 @@ namespace WebApiPocotop.Controllers
         {
             try
             {
-                return Ok(repository.GetByFilter(nome));
+                return Ok(extendedrepository.GetByFilter(nome));
             }
             catch (Exception ex)
             {

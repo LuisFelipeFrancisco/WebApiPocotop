@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Repositories.Database.SQLServer.ADO
 {
-    public class Veterinarios : IRepository<Models.Veterinario>
+    public class Veterinarios : IRepository<Models.Veterinario>, ExtendedIRepository<Models.Veterinario>
     {
         private readonly SqlConnection conn;
         //private readonly string chaveCache;

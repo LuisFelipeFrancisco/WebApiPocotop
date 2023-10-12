@@ -6,9 +6,11 @@ namespace WebApiPocotop.Controllers
     public class VeterinarioController : ApiController
     {
         private readonly Repositories.IRepository<Models.Veterinario> repository;
+        private readonly Repositories.ExtendedIRepository<Models.Veterinario> extendedrepository;
         public VeterinarioController()
         {
             repository = new Repositories.Database.SQLServer.ADO.Veterinarios(Configurations.SQLServer.getConnectionString());
+            extendedrepository = new Repositories.Database.SQLServer.ADO.Veterinarios(Configurations.SQLServer.getConnectionString());
         }
 
         // GET: api/Veterinario
@@ -112,7 +114,7 @@ namespace WebApiPocotop.Controllers
         {
             try
             {
-                return Ok(repository.GetByFilter(nome));
+                return Ok(extendedrepository.GetByFilter(nome));
             }
             catch (Exception ex)
             {

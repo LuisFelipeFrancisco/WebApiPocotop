@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace Repositories.Database.SQLServer.ADO
 {
-    public class Proprietarios : IRepository<Models.Proprietario>
+    public class Proprietarios : IRepository<Models.Proprietario>, ExtendedIRepository<Models.Proprietario>
     {
         private readonly SqlConnection conn;
         public Proprietarios(String connectionString)
