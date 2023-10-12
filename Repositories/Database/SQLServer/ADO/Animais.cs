@@ -94,7 +94,7 @@ namespace Repositories.Database.SQLServer.ADO
             using (conn)
             {
                 conn.Open();
-                string commandText = "INSERT INTO Animal (idProprietario, fotoAnimal, nomeAnimal, sexoAnimal, registroAnimal, dataNascimentoAnimal, racaAnimal, pelagemAnimal, temperamentoAnimal, observacoesAnimal, dataCadastroAnimal) VALUES (@idProprietario, @fotoAnimal, @nomeAnimal, @sexoAnimal, @registroAnimal, @dataNascimentoAnimal, @racaAnimal, @pelagemAnimal, @temperamentoAnimal, @observacoesAnimal, @dataCadastroAnimal) select convert(int, @@IDENTITY) as id;";
+                string commandText = "INSERT INTO Animal (idProprietario, fotoAnimal, nomeAnimal, sexoAnimal, registroAnimal, dataNascimentoAnimal, racaAnimal, pelagemAnimal, temperamentoAnimal, observacoesAnimal, dataCadastroAnimal) VALUES (@idProprietario, @fotoAnimal, @nomeAnimal, @sexoAnimal, @registroAnimal, @dataNascimentoAnimal, @racaAnimal, @pelagemAnimal, @temperamentoAnimal, @observacoesAnimal, @dataCadastroAnimal); select convert(int, @@IDENTITY) as id;";
 
                 using (SqlCommand cmd = new SqlCommand(commandText, conn))
                 {

@@ -94,6 +94,7 @@
     <Compile Include="Configurations\SQLServer.cs" />
     <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\ProprietarioController.cs" />
+    <Compile Include="Controllers\ServicoController.cs" />
     <Compile Include="Controllers\VeterinarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

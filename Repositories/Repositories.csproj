@@ -181,6 +181,7 @@
     <Compile Include="Database\SQLServer\ADO\Animais.cs" />
     <Compile Include="Database\SQLServer\ADO\Proprietarios.cs" />
     <Compile Include="Database\SQLServer\ADO\Veterinarios.cs" />
+    <Compile Include="Database\SQLServer\ADO\Servicos.cs" />
     <Compile Include="ExtendedIRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

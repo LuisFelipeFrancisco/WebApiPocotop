@@ -114,7 +114,7 @@ CREATE TABLE Veterinario (
 CREATE TABLE Servico (
     idServico int IDENTITY(1,1) PRIMARY KEY,
     nomeServico varchar(100) NOT NULL,
-    valorServico varchar(100) NOT NULL,
+    valorServico decimal(18,2) NOT NULL,
     observacoesServico varchar(100) NULL,
     dataCadastroServico date NOT NULL
 );
@@ -213,3 +213,21 @@ INSERT INTO animal (idProprietario,
                     'Calmo', 
                     NULL,
                     '2023-10-12');
+
+INSERT INTO Servico (nomeServico, 
+                     valorServico, 
+                     observacoesServico, 
+                     dataCadastroServico) 
+            values ('Banho', 
+                    50.00, 
+                    NULL, 
+                    '2022-10-12');
+
+INSERT INTO Servico (nomeServico, 
+                     valorServico, 
+                     observacoesServico, 
+                     dataCadastroServico) 
+            values ('Emisão de Atestado', 
+                    200, 
+                    'Atestado para viagem interestadual',
+                    '2022-10-12');
