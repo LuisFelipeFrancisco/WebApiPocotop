@@ -92,6 +92,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Configurations\Log.cs" />
     <Compile Include="Configurations\SQLServer.cs" />
+    <Compile Include="Controllers\AnimalController.cs" />
     <Compile Include="Controllers\ProprietarioController.cs" />
     <Compile Include="Controllers\VeterinarioController.cs" />
     <Compile Include="Global.asax.cs">

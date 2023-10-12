@@ -7,10 +7,12 @@ namespace Repositories.Database.SQLServer.ADO
     public class Proprietarios : IRepository<Models.Proprietario>, ExtendedIRepository<Models.Proprietario>
     {
         private readonly SqlConnection conn;
+        
         public Proprietarios(String connectionString)
         {
             this.conn = new SqlConnection(connectionString);
         }
+        
         public List<Models.Proprietario> Get()
         {
             List<Models.Proprietario> proprietarios = new List<Models.Proprietario>();
@@ -48,6 +50,7 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return proprietarios;
         }
+        
         public Models.Proprietario GetById(int id)
         {
             List<Models.Proprietario> proprietarios = new List<Models.Proprietario>();
@@ -87,6 +90,7 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return proprietario;
         }
+        
         public void Add(Models.Proprietario proprietario)
         {
             using(conn)
@@ -118,6 +122,7 @@ namespace Repositories.Database.SQLServer.ADO
                 }
             }
         }
+        
         public int Update(int id, Models.Proprietario proprietario)
         {
             int linhasAfetadas = 0;
@@ -155,6 +160,7 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
+        
         public int Delete(int id)
         {
             int linhasAfetadas = 0;
@@ -174,7 +180,7 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
-
+        
         public List<Models.Proprietario> GetByFilter(string filter)
         {
             List<Models.Proprietario> proprietarios = new List<Models.Proprietario>();

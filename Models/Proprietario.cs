@@ -1,22 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-/* 
-idProprietario int IDENTITY(1,1) PRIMARY KEY, - Obrigatório
-nomeProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 100 caracteres, Erro: "O nome do proprietário é obrigatório", "O nome do proprietário deve conter no máximo 100 caracteres", Não pode ser nulo
-emailProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 100 caracteres, Erro: "O email do proprietário é obrigatório", "O email do proprietário deve conter no máximo 100 caracteres", Não pode ser nulo
-dataNascimentoProprietario date NOT NULL, - Obrigatório, Erro: "A data de nascimento do proprietário é obrigatória", Não pode ser nulo
-estadoProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 2 caracteres, Erro: "O estado do proprietário é obrigatório", "O estado do proprietário deve conter no máximo 2 caracteres", Não pode ser nulo
-cidadeProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 30 caracteres, Erro: "A cidade do proprietário é obrigatória", "A cidade do proprietário deve conter no máximo 30 caracteres", Não pode ser nulo
-bairroProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 30 caracteres, Erro: "O bairro do proprietário é obrigatório", "O bairro do proprietário deve conter no máximo 30 caracteres", Não pode ser nulo
-ruaProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 30 caracteres, Erro: "A rua do proprietário é obrigatória", "A rua do proprietário deve conter no máximo 30 caracteres", Não pode ser nulo
-numeroProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 10 caracteres, Erro: "O número do proprietário é obrigatório", "O número do proprietário deve conter no máximo 10 caracteres", Não pode ser nulo
-complementoProprietario varchar(100) NULL, - Opcional e no máximo 30 caracteres, Erro: "O complemento do proprietário deve conter no máximo 30 caracteres", Pode ser nulo
-telefoneProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 15 caracteres, Erro: "O telefone do proprietário é obrigatório", "O telefone do proprietário deve conter no máximo 15 caracteres", Não pode ser nulo
-cpfcnpjProprietario varchar(100) NOT NULL, - Obrigatório e no máximo 20 caracteres, Erro: "O CPF/CNPJ do proprietário é obrigatório", "O CPF/CNPJ do proprietário deve conter no máximo 20 caracteres", Não pode ser nulo
-dataCadastroProprietario datetime NOT NULL - Obrigatório, Erro: "A data de cadastro do proprietário é obrigatória", Não pode ser nulo
- */
-
 namespace Models
 {
     public class Proprietario

@@ -1,25 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-/* 
-idVeterinario int IDENTITY(1,1) PRIMARY KEY, - Obrigatório
-nomeVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 100 caracteres, Errormessage: "O nome do veterinário é obrigatório", Errormessage: "O nome do veterinário somente pode ter no máximo 100 caracteres"
-dataNascimentoVeterinario date NOT NULL, - Obrigatório, Errormessage: "A data de nascimento do veterinário é obrigatória"
-fotoVeterinario varchar(100) NULL, - Opcional, maximo 100 caracteres, Errormessage: "A foto do veterinário somente pode ter no máximo 100 caracteres"
-emailVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 100 caracteres, Errormessage: "O email do veterinário é obrigatório", Errormessage: "O email do veterinário somente pode ter no máximo 100 caracteres"
-senhaVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 100 caracteres, Errormessage: "A senha do veterinário é obrigatória", Errormessage: "A senha do veterinário somente pode ter no máximo 100 caracteres"
-estadoVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 2 caracteres, Errormessage: "O estado do veterinário é obrigatório", Errormessage: "O estado do veterinário somente pode ter no máximo 2 caracteres"
-cidadeVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 30 caracteres, Errormessage: "A cidade do veterinário é obrigatória", Errormessage: "A cidade do veterinário somente pode ter no máximo 30 caracteres"
-bairroVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 30 caracteres, Errormessage: "O bairro do veterinário é obrigatório", Errormessage: "O bairro do veterinário somente pode ter no máximo 30 caracteres"
-ruaVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 30 caracteres, Errormessage: "A rua do veterinário é obrigatória", Errormessage: "A rua do veterinário somente pode ter no máximo 30 caracteres"
-numeroVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 10 caracteres, Errormessage: "O número do veterinário é obrigatório", Errormessage: "O número do veterinário somente pode ter no máximo 10 caracteres"
-complementoVeterinario varchar(100) NULL, - Opcional, maximo 30 caracteres, Errormessage: "O complemento somente pode ter no máximo 30 caracteres"
-telefoneVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 15 caracteres, Errormessage: "O telefone do veterinário é obrigatório", Errormessage: "O telefone do veterinário somente pode ter no máximo 15 caracteres"
-crmvVeterinario varchar(100) NOT NULL, - Obrigatório, maximo 10 caracteres, Errormessage: "O CRMV do veterinário é obrigatório", Errormessage: "O CRMV do veterinário somente pode ter no máximo 10 caracteres"
-dataCadastroVeterinario date NOT NULL - Obrigatório, Errormessage: "A data de cadastro do veterinário é obrigatória"
-
-*/
-
 namespace Models
 {
     public class Veterinario

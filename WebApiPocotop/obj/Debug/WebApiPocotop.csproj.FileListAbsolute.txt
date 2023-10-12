@@ -59,3 +59,4 @@ C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Models.pdb
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Repositories.pdb
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Logger.dll
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Logger.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Repositories.dll.config
