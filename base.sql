@@ -47,7 +47,7 @@
 -- Data do Cadastro - Data do cadastro deste serviço
 
 -- Agendamento
--- - Selecione o proprietário deste animal
+-- Proprietario - Selecione o proprietário deste animal
 -- Animal -  ProprietárioSelecione o animal deste agendamento
 -- Serviço - Selecione o serviço deste agendamento
 -- Data do Agendamento - Data do agendamento
@@ -65,6 +65,7 @@ CREATE TABLE Proprietario (
     idProprietario int IDENTITY(1,1) PRIMARY KEY,
     nomeProprietario varchar(100) NOT NULL,
     emailProprietario varchar(100) NOT NULL,
+    dataNascimentoProprietario date NOT NULL,
     estadoProprietario varchar(100) NOT NULL,
     cidadeProprietario varchar(100) NOT NULL,
     bairroProprietario varchar(100) NOT NULL,
@@ -73,7 +74,7 @@ CREATE TABLE Proprietario (
     complementoProprietario varchar(100) NULL,
     telefoneProprietario varchar(100) NOT NULL,
     cpfcnpjProprietario varchar(100) NOT NULL,
-    dataCadastroProprietario datetime NOT NULL
+    dataCadastroProprietario date NOT NULL
 );
 
 CREATE TABLE Animal (
@@ -83,18 +84,19 @@ CREATE TABLE Animal (
     nomeAnimal varchar(100) NOT NULL,
     sexoAnimal varchar(100) NOT NULL,
     registroAnimal varchar(100) NULL,
-    dataNascimentoAnimal datetime NOT NULL,
+    dataNascimentoAnimal date NOT NULL,
     racaAnimal varchar(100) NOT NULL,
     pelagemAnimal varchar(100) NULL,
     temperamentoAnimal varchar(100) NULL,
     observacoesAnimal varchar(100) NULL,
-    dataCadastroAnimal datetime NOT NULL,
+    dataCadastroAnimal date NOT NULL,
     CONSTRAINT FK_Proprietario_Animal FOREIGN KEY (idProprietario) REFERENCES Proprietario(idProprietario)
 );
 
 CREATE TABLE Veterinario (
     idVeterinario int IDENTITY(1,1) PRIMARY KEY,
     nomeVeterinario varchar(100) NOT NULL,
+    dataNascimentoVeterinario date NOT NULL,
     fotoVeterinario varchar(100) NULL,
     emailVeterinario varchar(100) NOT NULL,
     senhaVeterinario varchar(100) NOT NULL,
@@ -106,7 +108,7 @@ CREATE TABLE Veterinario (
     complementoVeterinario varchar(100) NULL,
     telefoneVeterinario varchar(100) NOT NULL,
     crmvVeterinario varchar(100) NOT NULL,
-    dataCadastroVeterinario datetime NOT NULL
+    dataCadastroVeterinario date NOT NULL
 );
 
 CREATE TABLE Servico (
@@ -114,7 +116,7 @@ CREATE TABLE Servico (
     nomeServico varchar(100) NOT NULL,
     valorServico varchar(100) NOT NULL,
     observacoesServico varchar(100) NULL,
-    dataCadastroServico datetime NOT NULL
+    dataCadastroServico date NOT NULL
 );
 
 CREATE TABLE Agendamento (
@@ -123,12 +125,68 @@ CREATE TABLE Agendamento (
     idAnimal int NOT NULL,
     idServico int NOT NULL,
     idVeterinario int NOT NULL,
-    dataAgendamento datetime NOT NULL,
-    horaAgendamento datetime NOT NULL,
+    dataAgendamento date NOT NULL,
+    horaAgendamento date NOT NULL,
     observacoesAgendamento varchar(100) NULL,
-    dataCadastroAgendamento datetime NOT NULL,
+    dataCadastroAgendamento date NOT NULL,
     CONSTRAINT FK_Proprietario_Agendamento FOREIGN KEY (idProprietario) REFERENCES Proprietario(idProprietario),
     CONSTRAINT FK_Veterinario_Agendamento FOREIGN KEY (idVeterinario) REFERENCES Veterinario(idVeterinario),
     CONSTRAINT FK_Animal_Agendamento FOREIGN KEY (idAnimal) REFERENCES Animal(idAnimal),
     CONSTRAINT FK_Servico_Agendamento FOREIGN KEY (idServico) REFERENCES Servico(idServico)
 );
+
+
+INSERT into Veterinario (nomeVeterinario, 
+                         dataNascimentoVeterinario, 
+                         fotoVeterinario, 
+                         emailVeterinario, 
+                         senhaVeterinario, 
+                         estadoVeterinario, 
+                         cidadeVeterinario, 
+                         bairroVeterinario, 
+                         ruaVeterinario, 
+                         numeroVeterinario, 
+                         complementoVeterinario, 
+                         telefoneVeterinario, 
+                         crmvVeterinario, 
+                         dataCadastroVeterinario) 
+                values ('João', 
+                        '1990-01-01', 
+                        'foto.url',
+                        'joao@email.com.br',
+                        '123456',
+                        'SP',
+                        'São Paulo',
+                        'Centro',
+                        'Rua 1',
+                        '123',
+                        'Apto 1',
+                        '123456789',
+                        '123456',
+                        '2021-01-01');
+
+
+INSERT into Proprietario (nomeProprietario, 
+                          emailProprietario, 
+                          dataNascimentoProprietario, 
+                          estadoProprietario, 
+                          cidadeProprietario, 
+                          bairroProprietario, 
+                          ruaProprietario, 
+                          numeroProprietario, 
+                          complementoProprietario, 
+                          telefoneProprietario, 
+                          cpfcnpjProprietario, 
+                          dataCadastroProprietario)
+                values ('Maria',
+                        NULL,
+                        '1990-01-01',
+                        'SP',
+                        'São Paulo',
+                        'Centro',
+                        'Rua 1',
+                        '123',
+                        'Apto 1',
+                        '123456789',
+                        '123456789',
+                        '2021-01-01');

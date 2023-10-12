@@ -106,12 +106,13 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // GET: api/Veterinario/?filter=nome
-        public IHttpActionResult GetByFilter(string filter)
+        // GET: api/Veterinario/?Filter?nome=string
+        [Route("api/Veterinario/Filter")]
+        public IHttpActionResult GetByFilter(string nome)
         {
             try
             {
-                return Ok(repository.GetByFilter(filter));
+                return Ok(repository.GetByFilter(nome));
             }
             catch (Exception ex)
             {

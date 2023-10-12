@@ -18,7 +18,7 @@ namespace Repositories.Database.SQLServer.ADO
             using(conn)
             {
                 conn.Open();
-                string commandText = "SELECT idProprietario, nomeProprietario, emailProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario";
+                string commandText = "SELECT idProprietario, nomeProprietario, emailProprietario, dataNascimentoProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario";
 
                 using (SqlCommand cmd = new SqlCommand(commandText, conn))
                 {
@@ -30,6 +30,7 @@ namespace Repositories.Database.SQLServer.ADO
                             proprietario.idProprietario = (int)dataReader["idProprietario"];
                             proprietario.nomeProprietario = (string)dataReader["nomeProprietario"];
                             proprietario.emailProprietario = (string)dataReader["emailProprietario"];
+                            proprietario.dataNascimentoProprietario = (DateTime)dataReader["dataNascimentoProprietario"];
                             proprietario.estadoProprietario = (string)dataReader["estadoProprietario"];
                             proprietario.cidadeProprietario = (string)dataReader["cidadeProprietario"];
                             proprietario.bairroProprietario = (string)dataReader["bairroProprietario"];
@@ -59,7 +60,7 @@ namespace Repositories.Database.SQLServer.ADO
                 using(SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT idProprietario, nomeProprietario, emailProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario WHERE idProprietario = @idProprietario";
+                    cmd.CommandText = "SELECT idProprietario, nomeProprietario, emailProprietario, dataNascimentoProprietario,estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario WHERE idProprietario = @idProprietario";
                     cmd.Parameters.Add(new SqlParameter("@idProprietario", System.Data.SqlDbType.Int)).Value = id;
 
                     using (SqlDataReader dataReader = cmd.ExecuteReader())
@@ -70,6 +71,7 @@ namespace Repositories.Database.SQLServer.ADO
                             proprietario.idProprietario = (int)dataReader["idProprietario"];
                             proprietario.nomeProprietario = (string)dataReader["nomeProprietario"];
                             proprietario.emailProprietario = (string)dataReader["emailProprietario"];
+                            proprietario.dataNascimentoProprietario = (DateTime)dataReader["dataNascimentoProprietario"];
                             proprietario.estadoProprietario = (string)dataReader["estadoProprietario"];
                             proprietario.cidadeProprietario = (string)dataReader["cidadeProprietario"];
                             proprietario.bairroProprietario = (string)dataReader["bairroProprietario"];
@@ -90,12 +92,13 @@ namespace Repositories.Database.SQLServer.ADO
             using(conn)
             {
                 conn.Open();
-                string commandText = "INSERT INTO Proprietario (nomeProprietario, emailProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario) VALUES (@nomeProprietario, @emailProprietario, @estadoProprietario, @cidadeProprietario, @bairroProprietario, @ruaProprietario, @numeroProprietario, @complementoProprietario, @telefoneProprietario, @cpfcnpjProprietario, @dataCadastroProprietario); select convert(int, @@IDENTITY) as id;";
+                string commandText = "INSERT INTO Proprietario (nomeProprietario, emailProprietario, dataNascimentoProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario) VALUES (@nomeProprietario, @emailProprietario, @dataNascimentoProprietario, @estadoProprietario, @cidadeProprietario, @bairroProprietario, @ruaProprietario, @numeroProprietario, @complementoProprietario, @telefoneProprietario, @cpfcnpjProprietario, @dataCadastroProprietario); select convert(int, @@IDENTITY) as id;";
 
                 using (SqlCommand cmd = new SqlCommand(commandText, conn))
                 {
                     cmd.Parameters.Add(new SqlParameter("@nomeProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.nomeProprietario;
                     cmd.Parameters.Add(new SqlParameter("@emailProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.emailProprietario;
+                    cmd.Parameters.Add(new SqlParameter("@dataNascimentoProprietario", System.Data.SqlDbType.DateTime)).Value = proprietario.dataNascimentoProprietario;
                     cmd.Parameters.Add(new SqlParameter("@estadoProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.estadoProprietario;
                     cmd.Parameters.Add(new SqlParameter("@cidadeProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.cidadeProprietario;
                     cmd.Parameters.Add(new SqlParameter("@bairroProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.bairroProprietario;
@@ -126,11 +129,12 @@ namespace Repositories.Database.SQLServer.ADO
                 using(SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "UPDATE Proprietario SET nomeProprietario = @nomeProprietario, emailProprietario = @emailProprietario, estadoProprietario = @estadoProprietario, cidadeProprietario = @cidadeProprietario, bairroProprietario = @bairroProprietario, ruaProprietario = @ruaProprietario, numeroProprietario = @numeroProprietario, complementoProprietario = @complementoProprietario, telefoneProprietario = @telefoneProprietario, cpfcnpjProprietario = @cpfcnpjProprietario, dataCadastroProprietario = @dataCadastroProprietario WHERE idProprietario = @idProprietario";
+                    cmd.CommandText = "UPDATE Proprietario SET nomeProprietario = @nomeProprietario, emailProprietario = @emailProprietario, dataNascimentoProprietario = @dataNascimentoProprietario, estadoProprietario = @estadoProprietario, cidadeProprietario = @cidadeProprietario, bairroProprietario = @bairroProprietario, ruaProprietario = @ruaProprietario, numeroProprietario = @numeroProprietario, complementoProprietario = @complementoProprietario, telefoneProprietario = @telefoneProprietario, cpfcnpjProprietario = @cpfcnpjProprietario, dataCadastroProprietario = @dataCadastroProprietario WHERE idProprietario = @idProprietario";
 
                     cmd.Parameters.Add(new SqlParameter("@idProprietario", System.Data.SqlDbType.Int)).Value = id;
                     cmd.Parameters.Add(new SqlParameter("@nomeProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.nomeProprietario;
                     cmd.Parameters.Add(new SqlParameter("@emailProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.emailProprietario;
+                    cmd.Parameters.Add(new SqlParameter("@dataNascimentoProprietario", System.Data.SqlDbType.DateTime)).Value = proprietario.dataNascimentoProprietario;
                     cmd.Parameters.Add(new SqlParameter("@estadoProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.estadoProprietario;
                     cmd.Parameters.Add(new SqlParameter("@cidadeProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.cidadeProprietario;
                     cmd.Parameters.Add(new SqlParameter("@bairroProprietario", System.Data.SqlDbType.VarChar)).Value = proprietario.bairroProprietario;
@@ -183,7 +187,7 @@ namespace Repositories.Database.SQLServer.ADO
                 using(SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT idProprietario, nomeProprietario, emailProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario WHERE nomeProprietario LIKE @nomeProprietario";
+                    cmd.CommandText = "SELECT idProprietario, nomeProprietario, emailProprietario, dataNascimentoProprietario, estadoProprietario, cidadeProprietario, bairroProprietario, ruaProprietario, numeroProprietario, complementoProprietario, telefoneProprietario, cpfcnpjProprietario, dataCadastroProprietario FROM Proprietario WHERE nomeProprietario LIKE @nomeProprietario";
                     cmd.Parameters.Add(new SqlParameter("@nomeProprietario", System.Data.SqlDbType.VarChar)).Value = "%" + filter + "%";
 
                     using (SqlDataReader dataReader = cmd.ExecuteReader())
@@ -194,6 +198,7 @@ namespace Repositories.Database.SQLServer.ADO
                             proprietario.idProprietario = (int)dataReader["idProprietario"];
                             proprietario.nomeProprietario = (string)dataReader["nomeProprietario"];
                             proprietario.emailProprietario = (string)dataReader["emailProprietario"];
+                            proprietario.dataNascimentoProprietario = (DateTime)dataReader["dataNascimentoProprietario"];
                             proprietario.estadoProprietario = (string)dataReader["estadoProprietario"];
                             proprietario.cidadeProprietario = (string)dataReader["cidadeProprietario"];
                             proprietario.bairroProprietario = (string)dataReader["bairroProprietario"];
