@@ -222,5 +222,44 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return proprietarios;
         }
+
+        public List<Models.Proprietario> GetByQuery(string query)
+        {
+            List<Models.Proprietario> proprietarios = new List<Models.Proprietario>();
+            Models.Proprietario proprietario = null;
+
+            using(conn)
+            {
+                conn.Open();
+                string commandText = query;
+
+                using(SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while(dataReader.Read())
+                        {
+                            proprietario = new Models.Proprietario();
+                            proprietario.idProprietario = (int)dataReader["idProprietario"];
+                            proprietario.nomeProprietario = (string)dataReader["nomeProprietario"];
+                            proprietario.emailProprietario = (string)dataReader["emailProprietario"];
+                            proprietario.dataNascimentoProprietario = (DateTime)dataReader["dataNascimentoProprietario"];
+                            proprietario.estadoProprietario = (string)dataReader["estadoProprietario"];
+                            proprietario.cidadeProprietario = (string)dataReader["cidadeProprietario"];
+                            proprietario.bairroProprietario = (string)dataReader["bairroProprietario"];
+                            proprietario.ruaProprietario = (string)dataReader["ruaProprietario"];
+                            proprietario.numeroProprietario = (string)dataReader["numeroProprietario"];
+                            proprietario.complementoProprietario = dataReader["complementoProprietario"] == DBNull.Value ? null : (string)dataReader["complementoProprietario"];
+                            proprietario.telefoneProprietario = (string)dataReader["telefoneProprietario"];
+                            proprietario.cpfcnpjProprietario = (string)dataReader["cpfcnpjProprietario"];
+                            proprietario.dataCadastroProprietario = (DateTime)dataReader["dataCadastroProprietario"];
+
+                            proprietarios.Add(proprietario);
+                        }
+                    }
+                }
+            }
+            return proprietarios;
+        }
     }
 }

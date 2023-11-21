@@ -144,5 +144,36 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
+
+        public List<Models.Servico> GetByQuery(string query)
+        {
+            List<Models.Servico> servicos = new List<Models.Servico>();
+            Models.Servico servico = null;
+
+            using(conn)
+            {
+                conn.Open();
+                string commandText = query;
+
+                using(SqlCommand cmd = new SqlCommand(commandText, conn))
+                {
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while(dataReader.Read())
+                        {
+                            servico = new Models.Servico();
+                            servico.idServico = (int)dataReader["idServico"];
+                            servico.nomeServico = (string)dataReader["nomeServico"];
+                            servico.valorServico = (decimal)dataReader["valorServico"];
+                            servico.observacoesServico = dataReader["observacoesServico"] == DBNull.Value ? null : (string)dataReader["observacoesServico"];
+                            servico.dataCadastroServico = (DateTime)dataReader["dataCadastroServico"];
+
+                            servicos.Add(servico);
+                        }
+                    }
+                }
+            }
+            return servicos;
+        }
     }
 }

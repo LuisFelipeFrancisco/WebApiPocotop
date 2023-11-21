@@ -212,5 +212,46 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return linhasAfetadas;
         }
+
+        public List<Models.Animal> GetByQuery(string query)
+        {
+            // Endpoint vai me passar a query e eu vou executar no banco e retornar o resultado
+            List<Models.Animal> animais = new List<Models.Animal>();
+            Models.Animal animal = null;
+
+            using(conn)
+            {
+                conn.Open();
+
+                using(SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = query;
+
+                    using(SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while(dataReader.Read())
+                        {
+                            animal = new Models.Animal();
+                            animal.idAnimal = (int)dataReader["idAnimal"];
+                            animal.idProprietario = (int)dataReader["idProprietario"];
+                            animal.fotoAnimal = dataReader["fotoAnimal"] == DBNull.Value ? null : (string)dataReader["fotoAnimal"];
+                            animal.nomeAnimal = (string)dataReader["nomeAnimal"];
+                            animal.sexoAnimal = (string)dataReader["sexoAnimal"];
+                            animal.registroAnimal = dataReader["registroAnimal"] == DBNull.Value ? null : (string)dataReader["registroAnimal"];
+                            animal.dataNascimentoAnimal = (DateTime)dataReader["dataNascimentoAnimal"];
+                            animal.racaAnimal = (string)dataReader["racaAnimal"];
+                            animal.pelagemAnimal = dataReader["pelagemAnimal"] == DBNull.Value ? null : (string)dataReader["pelagemAnimal"];
+                            animal.temperamentoAnimal = dataReader["temperamentoAnimal"] == DBNull.Value ? null : (string)dataReader["temperamentoAnimal"];
+                            animal.observacoesAnimal = dataReader["observacoesAnimal"] == DBNull.Value ? null : (string)dataReader["observacoesAnimal"];
+                            animal.dataCadastroAnimal = (DateTime)dataReader["dataCadastroAnimal"];
+
+                            animais.Add(animal);
+                        }
+                    }
+                }
+            }
+            return animais;
+        }
     }
 }

@@ -105,5 +105,20 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
+
+        // GET: api/Animal/?Query?comando=string
+        [Route("api/Animal/Query")]
+        public IHttpActionResult GetByQuery(string comando)
+        {
+            try
+            {
+                return Ok(repository.GetByQuery(comando));
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
+                return InternalServerError();
+            }
+        }
     }
 }

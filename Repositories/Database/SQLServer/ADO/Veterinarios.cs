@@ -247,5 +247,49 @@ namespace Repositories.Database.SQLServer.ADO
             }
             return veterinarios;
         }
+
+        public List<Models.Veterinario> GetByQuery(string query)
+        {
+            // Endpoint vai me passar a query e eu vou executar no banco e retornar o resultado
+            List<Models.Veterinario> veterinarios = new List<Models.Veterinario>();
+            Models.Veterinario veterinario = null;
+
+            using(conn)
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = query;
+
+                    using (SqlDataReader dataReader = cmd.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            veterinario = new Models.Veterinario();
+                            veterinario.idVeterinario = (int)dataReader["idVeterinario"];
+                            veterinario.nomeVeterinario = (string)dataReader["nomeVeterinario"];
+                            veterinario.dataNascimentoVeterinario = (DateTime)dataReader["dataNascimentoVeterinario"];
+                            veterinario.fotoVeterinario = dataReader["fotoVeterinario"] == DBNull.Value ? null : (string)dataReader["fotoVeterinario"];
+                            veterinario.emailVeterinario = (string)dataReader["emailVeterinario"];
+                            veterinario.senhaVeterinario = (string)dataReader["senhaVeterinario"];
+                            veterinario.estadoVeterinario = (string)dataReader["estadoVeterinario"];
+                            veterinario.cidadeVeterinario = (string)dataReader["cidadeVeterinario"];
+                            veterinario.bairroVeterinario = (string)dataReader["bairroVeterinario"];
+                            veterinario.ruaVeterinario = (string)dataReader["ruaVeterinario"];
+                            veterinario.numeroVeterinario = (string)dataReader["numeroVeterinario"];
+                            veterinario.complementoVeterinario = dataReader["complementoVeterinario"] == DBNull.Value ? null : (string)dataReader["complementoVeterinario"];
+                            veterinario.telefoneVeterinario = (string)dataReader["telefoneVeterinario"];
+                            veterinario.crmvVeterinario = (string)dataReader["crmvVeterinario"];
+                            veterinario.dataCadastroVeterinario = (DateTime)dataReader["dataCadastroVeterinario"];
+
+                            veterinarios.Add(veterinario);
+                        }
+                    }
+                }
+            }
+            return veterinarios;
+        }
     }
 }

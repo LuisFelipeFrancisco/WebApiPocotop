@@ -3,16 +3,16 @@ using System.Web.Http;
 
 namespace WebApiPocotop.Controllers
 {
-    public class ServicoController : ApiController
+    public class AgendamentoController : ApiController
     {
-        private readonly Repositories.IRepository<Models.Servico> repository;
+        private readonly Repositories.IRepository<Models.Agendamento> repository;
 
-        public ServicoController()
+        public AgendamentoController()
         {
-            repository = new Repositories.Database.SQLServer.ADO.Servicos(Configurations.SQLServer.getConnectionString());
+            repository = new Repositories.Database.SQLServer.ADO.Agendamentos(Configurations.SQLServer.getConnectionString());
         }
 
-        // GET: api/Servico
+        // GET: api/Agendamento
         public IHttpActionResult Get()
         {
             try
@@ -26,16 +26,16 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // GET: api/Servico/5
+        // GET: api/Agendamento/5
         public IHttpActionResult Get(int id)
         {
             try
             {
-                Models.Servico servico = repository.GetById(id);
-                if (servico == null)
+                Models.Agendamento agendamento = repository.GetById(id);
+                if (agendamento == null)
                     return NotFound();
                 else
-                    return Ok(servico);
+                    return Ok(agendamento);
             }
             catch (Exception ex)
             {
@@ -44,17 +44,17 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // POST: api/Servico
-        public IHttpActionResult Post(Models.Servico servico)
+        // POST: api/Agendamento
+        public IHttpActionResult Post(Models.Agendamento agendamento)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                repository.Add(servico);
+                repository.Add(agendamento);
 
-                return Ok(servico);
+                return Ok(agendamento);
             }
             catch (Exception ex)
             {
@@ -62,24 +62,23 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
-
-        // PUT: api/Servico/5
-        public IHttpActionResult Put(int id, Models.Servico servico)
+        // PUT: api/Agendamento/5
+        public IHttpActionResult Put(int id, Models.Agendamento agendamento)
         {
             try
             {
-                if (id != servico.idServico)
+                if (id != agendamento.idAgendamento)
                     ModelState.AddModelError("Id", "O id informado na URL é diferente do id informado no corpo da requisição");
 
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                int linhasAfetadas = repository.Update(id, servico);
+                int linhasAfetadas = repository.Update(id, agendamento);
 
                 if (linhasAfetadas == 0)
                     return NotFound();
 
-                return Ok(servico);
+                return Ok(agendamento);
             }
             catch (Exception ex)
             {
@@ -88,7 +87,7 @@ namespace WebApiPocotop.Controllers
             }
         }
 
-        // DELETE: api/Servico/5
+        // DELETE: api/Agendamento/5
         public IHttpActionResult Delete(int id)
         {
             try
@@ -106,9 +105,9 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
-        
-        // GET: api/Servico/?Query?comando=string
-        [Route("api/Servico/Query")]
+
+        // GET: api/Agendamento/?Query?comando=string
+        [Route("api/Agendamento/Query")]
         public IHttpActionResult GetByQuery(string comando)
         {
             try

@@ -9,5 +9,7 @@ namespace Repositories
         void Add(T entity);
         int Update(int id, T entity);
         int Delete(int id);
+        // Endpoint que vai receber uma query SQL do front executar no banco e retornar o resultado desejado
+        List<T> GetByQuery(string query);
     }
 }
