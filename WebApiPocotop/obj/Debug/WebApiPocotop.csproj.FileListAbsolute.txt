@@ -60,3 +60,5 @@ C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Repositories.pdb
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Logger.dll
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Logger.pdb
 C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Repositories.dll.config
+C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Dapper.dll
+C:\Users\luisf\Área de Trabalho\pocotop\WebApiPocotop\bin\Dapper.xml

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Dapper;
+using Newtonsoft.Json;
+using System;
+using System.Data.SqlClient;
+using System.Linq;
 using System.Web.Http;
 
 namespace WebApiPocotop.Controllers
@@ -120,5 +124,30 @@ namespace WebApiPocotop.Controllers
                 return InternalServerError();
             }
         }
+
+        // GET: api/Agendamento/?Query2?comando=string
+        [Route("api/Agendamento/Query2")]
+        public IHttpActionResult GetByQuery2([FromUri] string comando)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Configurations.SQLServer.getConnectionString()))
+                {
+                    conn.Open();
+
+                    // Execute a consulta usando Dapper
+                    var results = conn.Query<dynamic>(comando).AsList();
+
+                    // Retorne os resultados como JSON
+                    return Ok(results);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Log.write(ex, Configurations.Log.getLogPath());
+                return InternalServerError();
+            }
+        }
+
     }
 }

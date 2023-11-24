@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -161,39 +162,53 @@ namespace Repositories.Database.SQLServer.ADO
             return linhasAfetadas;
         }
 
-        public List<Models.Agendamento> GetByQuery(string query)
+                public List<Models.Agendamento> GetByQuery(string query)
+                {
+                    List<Models.Agendamento> agendamentos = new List<Models.Agendamento>();
+                    Models.Agendamento agendamento = null;
+
+                    using(conn)
+                    {
+                        conn.Open();
+                        string commandText = query;
+
+                        using(SqlCommand cmd = new SqlCommand(commandText, conn))
+                        {
+                            using (SqlDataReader dataReader = cmd.ExecuteReader())
+                            {
+                                while(dataReader.Read())
+                                {
+                                    agendamento = new Models.Agendamento();
+                                    agendamento.idAgendamento = (int)dataReader["idAgendamento"];
+                                    agendamento.idProprietario = (int)dataReader["idProprietario"];
+                                    agendamento.idAnimal = (int)dataReader["idAnimal"];
+                                    agendamento.idServico = (int)dataReader["idServico"];
+                                    agendamento.idVeterinario = (int)dataReader["idVeterinario"];
+                                    agendamento.dataAgendamento = (DateTime)dataReader["dataAgendamento"];
+                                    agendamento.horaAgendamento = (TimeSpan)dataReader["horaAgendamento"];
+                                    agendamento.observacoesAgendamento = dataReader["observacoesAgendamento"] == DBNull.Value ? null : (string)dataReader["observacoesAgendamento"];
+                                    agendamento.dataCadastroAgendamento = (DateTime)dataReader["dataCadastroAgendamento"];
+
+                                    agendamentos.Add(agendamento);
+                                }
+                            }
+                        }
+                    }
+                    return agendamentos;
+                }
+
+        // Query gererica mapeada com dapper
+        public List<dynamic> GetByQuery2(string query)
         {
-            List<Models.Agendamento> agendamentos = new List<Models.Agendamento>();
-            Models.Agendamento agendamento = null;
+            List<dynamic> results;
 
             using(conn)
             {
                 conn.Open();
-                string commandText = query;
-
-                using(SqlCommand cmd = new SqlCommand(commandText, conn))
-                {
-                    using (SqlDataReader dataReader = cmd.ExecuteReader())
-                    {
-                        while(dataReader.Read())
-                        {
-                            agendamento = new Models.Agendamento();
-                            agendamento.idAgendamento = (int)dataReader["idAgendamento"];
-                            agendamento.idProprietario = (int)dataReader["idProprietario"];
-                            agendamento.idAnimal = (int)dataReader["idAnimal"];
-                            agendamento.idServico = (int)dataReader["idServico"];
-                            agendamento.idVeterinario = (int)dataReader["idVeterinario"];
-                            agendamento.dataAgendamento = (DateTime)dataReader["dataAgendamento"];
-                            agendamento.horaAgendamento = (TimeSpan)dataReader["horaAgendamento"];
-                            agendamento.observacoesAgendamento = dataReader["observacoesAgendamento"] == DBNull.Value ? null : (string)dataReader["observacoesAgendamento"];
-                            agendamento.dataCadastroAgendamento = (DateTime)dataReader["dataCadastroAgendamento"];
-
-                            agendamentos.Add(agendamento);
-                        }
-                    }
-                }
+                results = conn.Query<dynamic>(query).AsList();
             }
-            return agendamentos;
+            return results;
         }
+
     }
 }

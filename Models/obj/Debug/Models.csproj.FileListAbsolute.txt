@@ -4,3 +4,6 @@ C:\Users\luisf\Área de Trabalho\pocotop\Models\obj\Debug\Models.csproj.Assembly
 C:\Users\luisf\Área de Trabalho\pocotop\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
 C:\Users\luisf\Área de Trabalho\pocotop\Models\obj\Debug\Models.dll
 C:\Users\luisf\Área de Trabalho\pocotop\Models\obj\Debug\Models.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\Models\bin\Debug\Dapper.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Models\bin\Debug\Dapper.xml
+C:\Users\luisf\Área de Trabalho\pocotop\Models\obj\Debug\Models.csproj.CopyComplete

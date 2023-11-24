@@ -4,3 +4,6 @@ C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.csproj.Assembly
 C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.csproj.CoreCompileInputs.cache
 C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.dll
 C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.pdb
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\bin\Debug\Dapper.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\bin\Debug\Dapper.xml
+C:\Users\luisf\Área de Trabalho\pocotop\Logger\obj\Debug\Logger.csproj.CopyComplete

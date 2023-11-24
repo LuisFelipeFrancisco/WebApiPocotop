@@ -75,3 +75,5 @@ C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\pt-BR\Microsoft.
 C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\ru\Microsoft.Data.SqlClient.resources.dll
 C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Dapper.dll
+C:\Users\luisf\Área de Trabalho\pocotop\Repositories\bin\Debug\Dapper.xml
